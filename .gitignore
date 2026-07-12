@@ -1,0 +1,27 @@
+# Vercel
+.vercel/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code
+.claude/
+
+# Node (na wypadek gdyby kiedyś)
+node_modules/
+npm-debug.log*
+
+# Backupy lokalne
+*.zip
+*.tar.gz
+*.bak
