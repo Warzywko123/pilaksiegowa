@@ -50,6 +50,24 @@
 })();
 
 // ============================================
+// Baner informacyjny o cookies (mapa Google)
+// ============================================
+
+(function () {
+  const banner = document.getElementById('cookieBanner');
+  const accept = document.getElementById('cookieAccept');
+  if (!banner || !accept) return;
+
+  const KEY = 'cookies-info-accepted';
+  if (!localStorage.getItem(KEY)) banner.hidden = false;
+
+  accept.addEventListener('click', () => {
+    localStorage.setItem(KEY, '1');
+    banner.hidden = true;
+  });
+})();
+
+// ============================================
 // Menu mobilne
 // ============================================
 
