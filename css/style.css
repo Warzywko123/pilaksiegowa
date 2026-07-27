@@ -428,6 +428,7 @@ section { scroll-margin-top: 84px; }
 
 .contact-map {
   margin-top: 44px;
+  position: relative;
 }
 
 .contact-map iframe {
@@ -436,6 +437,70 @@ section { scroll-margin-top: 84px; }
   height: 380px;
   border: 0;
   border-radius: var(--radius);
+}
+
+/* ── Zaślepka mapy (RODO) ──
+   Przykrywa iframe do czasu zgody. Znika, gdy skrypt doda .is-map-loaded. */
+.map-consent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  text-align: center;
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px, 44px 44px;
+}
+.is-map-loaded .map-consent { display: none; }
+.map-consent__pin { font-size: 2rem; line-height: 1; }
+.map-consent__address {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+}
+.map-consent__note {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 42ch;
+  margin: 0;
+}
+.map-consent__note a { color: var(--gold); }
+.map-consent__btn {
+  margin-top: 8px;
+  padding: 12px 28px;
+  min-height: 44px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.map-consent__btn:hover { background: var(--navy-dark); }
+.map-consent__btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* Na telefonach iframe ma tylko 300px wysokości — zaślepka musi się w tym zmieścić,
+   inaczej przycisk zostaje przycięty. */
+@media (max-width: 700px) {
+  .contact-map:not(.is-map-loaded) { min-height: 320px; }
+  .map-consent { padding: 20px; gap: 6px; }
+  .map-consent__pin { font-size: 1.6rem; }
+  .map-consent__address { font-size: 1.02rem; }
+  .map-consent__note { font-size: 0.82rem; line-height: 1.45; }
+  .map-consent__btn { padding: 10px 22px; font-size: 0.95rem; }
 }
 
 /* ---------- Polityka prywatności ---------- */

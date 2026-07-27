@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -266,13 +266,19 @@
       </ul>
     </div>
     <div class="container">
-      <div class="contact-map">
+      <div class="contact-map" data-map-consent>
         <iframe
-          src="https://maps.google.com/maps?q=Biuro+Rachunkowe+Danuta+Lauterbach&t=&z=16&ie=UTF8&iwloc=A&output=embed"
+          data-src="https://maps.google.com/maps?q=Biuro+Rachunkowe+Danuta+Lauterbach&t=&z=16&ie=UTF8&iwloc=A&output=embed"
           title="Mapa dojazdu — Biuro Rachunkowe Danuta Lauterbach, ul. Jasna 7, Piła"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
+        <div class="map-consent">
+          <span class="map-consent__pin" aria-hidden="true">📍</span>
+          <p class="map-consent__address">ul. Jasna 7<br>64-920 Piła</p>
+          <p class="map-consent__note">Mapa pochodzi z serwerów Google. Jej wczytanie przekaże Google Twój adres IP — dlatego pytamy najpierw. Szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+          <button type="button" class="map-consent__btn" data-map-action="load">Pokaż mapę</button>
+        </div>
       </div>
     </div>
   </section>
@@ -288,11 +294,12 @@
 </footer>
 
 <div class="cookie-banner" id="cookieBanner" hidden>
-  <p>Ta strona nie ustawia własnych plików cookies. Osadzona mapa Google może zapisywać pliki
-  cookies Google — szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+  <p>Ta strona nie ustawia własnych plików cookies i nie zbiera statystyk. Mapa Google
+  wczytuje się dopiero po kliknięciu „Pokaż mapę" — dopiero wtedy Google może zapisać swoje
+  pliki cookies. Szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
   <button type="button" id="cookieAccept" class="btn btn-gold">Rozumiem</button>
 </div>
 
-<script src="js/script.js?v=2"></script>
+<script src="js/script.js?v=3"></script>
 </body>
 </html>

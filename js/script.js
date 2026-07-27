@@ -68,6 +68,32 @@
 })();
 
 // ============================================
+// Mapa Google dopiero za zgodą (RODO)
+// ============================================
+// Ta strona nie ma banera z wyborem "Akceptuję / Tylko niezbędne" (nie ma
+// też GA4), więc jedyną zgodą na kontakt z Google jest świadome kliknięcie
+// "Pokaż mapę". Do tego czasu iframe ma tylko data-src i przeglądarka
+// nie łączy się z serwerami Google.
+
+(function () {
+  const kontenery = document.querySelectorAll('[data-map-consent]');
+  if (!kontenery.length) return;
+
+  const pokazMape = (kontener) => {
+    const ramka = kontener.querySelector('iframe[data-src]');
+    if (!ramka) return;
+    ramka.src = ramka.getAttribute('data-src');
+    ramka.removeAttribute('data-src');
+    kontener.classList.add('is-map-loaded');
+  };
+
+  kontenery.forEach((kontener) => {
+    const przycisk = kontener.querySelector('[data-map-action="load"]');
+    if (przycisk) przycisk.addEventListener('click', () => pokazMape(kontener));
+  });
+})();
+
+// ============================================
 // Menu mobilne
 // ============================================
 

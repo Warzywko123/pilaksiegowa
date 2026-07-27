@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -64,11 +64,16 @@
     </ul>
 
     <h2>3. Osadzona mapa Google</h2>
-    <p>W sekcji kontaktowej strony osadzona jest mapa Google (Google Maps). Podczas jej ładowania
-    Twoja przeglądarka łączy się z serwerami Google, co oznacza przekazanie Google Twojego adresu IP
-    oraz możliwość zapisania przez Google plików cookies. Dostawcą usługi jest Google Ireland Ltd.
-    (Gordon House, Barrow Street, Dublin 4, Irlandia). Zasady przetwarzania danych przez Google
-    opisuje <a href="https://policies.google.com/privacy?hl=pl" target="_blank" rel="noopener">polityka
+    <p>W sekcji kontaktowej strony dostępna jest mapa Google (Google Maps). Dostawcą usługi jest
+    Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irlandia).</p>
+    <p><strong>Mapa nie ładuje się automatycznie.</strong> Domyślnie w jej miejscu widnieje zaślepka
+    z adresem biura, a Twoja przeglądarka nie nawiązuje żadnego połączenia z serwerami Google.
+    Mapa zostaje wczytana dopiero po kliknięciu przycisku „Pokaż mapę".</p>
+    <p>Dopiero po tym kliknięciu Twoja przeglądarka łączy się z serwerami Google, co oznacza
+    przekazanie Google Twojego adresu IP oraz możliwość zapisania przez Google plików cookies.
+    Podstawą prawną jest Twoja zgoda (art. 6 ust. 1 lit. a RODO), wyrażona przez świadome kliknięcie
+    przycisku. Zasady przetwarzania danych przez Google opisuje
+    <a href="https://policies.google.com/privacy?hl=pl" target="_blank" rel="noopener">polityka
     prywatności Google</a>.</p>
 
     <h2>4. Pliki cookies i pamięć przeglądarki</h2>
@@ -110,11 +115,12 @@
 </footer>
 
 <div class="cookie-banner" id="cookieBanner" hidden>
-  <p>Ta strona nie ustawia własnych plików cookies. Osadzona mapa Google może zapisywać pliki
-  cookies Google — szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+  <p>Ta strona nie ustawia własnych plików cookies i nie zbiera statystyk. Mapa Google
+  wczytuje się dopiero po kliknięciu „Pokaż mapę" — dopiero wtedy Google może zapisać swoje
+  pliki cookies. Szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
   <button type="button" id="cookieAccept" class="btn btn-gold">Rozumiem</button>
 </div>
 
-<script src="js/script.js?v=2"></script>
+<script src="js/script.js?v=3"></script>
 </body>
 </html>
