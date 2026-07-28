@@ -51,6 +51,11 @@
   --navy-dark: #142338;
   --gold: #c9973c;
   --gold-light: #d9a441;
+  /* Złoto na JASNYM tle nie spełnia kontrastu (2,2–2,5:1), dlatego do tekstu
+     i grafik na bieli używamy ciemniejszych wariantów. Na granacie zostaje
+     oryginalne złoto — tam kontrast jest w porządku. */
+  --gold-text: #906b28;   /* 4.54:1 na jasnym tle — tekst */
+  --gold-mark: #c08b27;   /* 3.02:1 na bieli — gwiazdki i inne grafiki */
   --ink: #252b38;
   --muted: #5c6474;
   --bg: #ffffff;
@@ -298,6 +303,7 @@ section { scroll-margin-top: 84px; }
   font-family: var(--font-serif);
   font-size: 24px;
   font-weight: 600;
+  /* pasek jest granatowy — jasne złoto daje tu 6.27:1 */
   color: var(--gold-light);
 }
 
@@ -313,7 +319,7 @@ section { scroll-margin-top: 84px; }
 .section-alt { background: var(--bg-alt); }
 
 .section-kicker {
-  color: var(--gold);
+  color: var(--gold-text);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -397,7 +403,7 @@ section { scroll-margin-top: 84px; }
 }
 
 .stars {
-  color: var(--gold-light);
+  color: var(--gold-text);
   font-size: 16px;
   letter-spacing: 3px;
   margin-bottom: 14px;
@@ -517,7 +523,7 @@ section { scroll-margin-top: 84px; }
   max-width: 42ch;
   margin: 0;
 }
-.map-consent__note a { color: var(--gold); }
+.map-consent__note a { color: var(--gold-text); }  /* zaślepka ma jasne tło */
 .map-consent__btn {
   margin-top: 8px;
   padding: 12px 28px;
@@ -605,7 +611,7 @@ section { scroll-margin-top: 84px; }
 
 .cookie-banner[hidden] { display: none; }
 
-.cookie-banner a { color: var(--gold-light); }
+.cookie-banner a { color: var(--gold-light); }  /* baner ma ciemne, granatowe tło */
 
 .cookie-banner .btn {
   border: 0;
@@ -674,3 +680,19 @@ section { scroll-margin-top: 84px; }
   html { scroll-behavior: auto; }
   .hero-slides .slide { transition: none; }
 }
+
+/* --- Link „Przejdź do treści" (WCAG 2.4.1 Bypass Blocks) ---
+   Niewidoczny dopóki nie dostanie fokusu z klawiatury; wtedy wjeżdża
+   w lewy górny róg, żeby dało się pominąć nawigację jednym Tabem. */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 300;
+  padding: 0.75rem 1.25rem;
+  background: var(--navy-dark);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus { left: 0; }
