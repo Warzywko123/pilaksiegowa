@@ -153,7 +153,13 @@ section { scroll-margin-top: 84px; }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  /* 6px dopelnienia dawalo przycisk 36x28 — ponizej zalecanych 44x44
+     dla celu dotykowego (Apple HIG / Material). */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 .nav-toggle span {
   width: 24px;
@@ -258,12 +264,20 @@ section { scroll-margin-top: 84px; }
   flex-wrap: wrap;
 }
 
+.hero-dots button::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+}
+
 .hero-dots {
   position: absolute;
   bottom: 26px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  /* .hero-content ma z-index:2 i rozciaga sie na cala sekcje — przy rownym
+     z-index jego akapit przykrywal kropki i nie dalo sie ich klikac. */
+  z-index: 3;
   display: flex;
   gap: 10px;
 }
@@ -276,6 +290,9 @@ section { scroll-margin-top: 84px; }
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   padding: 0;
+  /* Kropka zostaje mala wizualnie, ale pole trafienia palcem powiekszamy
+     niewidoczna warstwa do ~34px (WCAG 2.5.8 wymaga min. 24x24). */
+  position: relative;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -450,8 +467,11 @@ section { scroll-margin-top: 84px; }
 
 .contact-list li {
   display: grid;
-  grid-template-columns: 92px 1fr;
+  /* minmax(0,…) zamiast 1fr: dlugi adres e-mail nie mogl sie zlamac i rozpychal
+     strone na najwezszych telefonach. */
+  grid-template-columns: 92px minmax(0, 1fr);
   gap: 14px;
+  overflow-wrap: anywhere;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 15px;
@@ -696,3 +716,11 @@ section { scroll-margin-top: 84px; }
   border-radius: 0 0 6px 0;
 }
 .skip-link:focus { left: 0; }
+
+/* ── Bardzo waskie telefony: dlugie slowa nie moga rozpychac ukladu ──
+   Przy 320px nieprzerywalne wyrazy ("Rachunkowosci", nazwiska w naglowkach)
+   wychodzily poza kontener i byly przycinane. */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  overflow-wrap: break-word;
+}
