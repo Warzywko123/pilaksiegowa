@@ -670,7 +670,10 @@ section { scroll-margin-top: 84px; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
-@media (max-width: 640px) {
+/* Hamburger wlaczal sie dopiero przy 640px, a poziome menu nie miesci sie juz
+   od ok. 750px w dol — miedzy 641 a 740 px „O mnie" i przycisk z numerem
+   lamaly sie na dwie linie. Prog samego menu podniesiony do 780px. */
+@media (max-width: 780px) {
   .main-nav {
     display: none;
     position: absolute;
@@ -686,6 +689,9 @@ section { scroll-margin-top: 84px; }
   }
   .main-nav.is-open { display: flex; }
   .nav-toggle { display: flex; }
+}
+
+@media (max-width: 640px) {
   .services-grid, .reviews-grid { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr; gap: 16px; }
   .hero { min-height: 540px; height: auto; padding: 96px 0; }
